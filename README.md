@@ -1,4 +1,4 @@
-# The Alkhayat Channel
+# Instant Messaging System: Alkhayat Renraku
 
 ## Specifications
 

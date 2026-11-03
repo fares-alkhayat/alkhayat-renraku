@@ -9,11 +9,31 @@
     <%- include('./partials/navbar') %>
 <body>
 
-    <h1>Welcome to my Website</h1>
-   
+    <h1>Welcome to Alkhayat Renraku! Please enjoy your stay!</h1>
+
+<fieldset>
+<legend>Latest Discussions</legend>
+</fieldset>
+
+<fieldset>
+<legend>Currency Rates and Stock Indices</legend>
+<script type="module" src="https://widgets.tradingview-widget.com/w/en/tv-ticker-tape.js"></script>
+
+<tv-ticker-tape symbols="FX_IDC:USDJPY,FX_IDC:EURJPY,FX_IDC:GBPJPY,FRED:NIKKEI225,TVC:GOLD,FX_IDC:XAUJPY,CRYPTO:BTCUSD,CRYPTO:ETHUSD" show-hover></tv-ticker-tape>
+</fieldset>
+
+<fieldset>
+<legend>Weather in Tokyo</legend>
+<style>.max_temp{display:inline-block !important}.min_temp{display:inline-block !important}.temp{display:block !important}.rain_s{display:block !important}.pop-rain{display:block !important}.speed-wind{display:block !important}.deg-wind{display:block !important}.w_snow{display:block !important}.w_bg{background:linear-gradient(to right,#ffffff, #fff)}</style><link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.12/css/weather-icons.min.css"><link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.12/css/weather-icons-wind.css"><link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet"><script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script><script type="text/javascript">weather_value=7;lat = 35.69389;lon =139.753616;inputText1 = "東京都千代田区";search_add = "東京都千代田区";</script><script src="https://sitecreation.co.jp/wp-content/themes/sango-theme-child/tpl/weather.js"></script><link id="PageStyleSheet" rel="stylesheet" href="https://sitecreation.co.jp/wp-content/themes/sango-theme-child/tpl/style.css"><div id="weather-wrapper"><div id="weather1"></div><div id="weather2"></div></div>
+
+</fieldset>
+
+<fieldset>
+<legend>News</legend>
     <iframe width="30%" height="750" class="rssdog" src="https://www.rssdog.com/index.php?url=https%3A%2F%2Fnewsonjapan.com%2Frss%2Ftop.xml&mode=html&showonly=&maxitems=0&showdescs=1&desctrim=0&descmax=0&tabwidth=100%25&showdate=1&utf8=1&linktarget=_blank&bordercol=%23d4d0c8&headbgcol=%23999999&headtxtcol=%23ffffff&titlebgcol=%23f1eded&titletxtcol=%23000000&itembgcol=%23ffffff&itemtxtcol=%23000000&ctl=0"></iframe>
     <iframe width="30%" height="750" class="rssdog" src="https://www.rssdog.com/index.php?url=https%3A%2F%2Fnews.web.nhk%2Fn-data%2Fconf%2Fna%2Frss%2Fcat0.xml&mode=html&showonly=&maxitems=0&showdescs=1&desctrim=0&descmax=0&tabwidth=100%25&showdate=1&utf8=1&linktarget=_blank&bordercol=%23d4d0c8&headbgcol=%23999999&headtxtcol=%23ffffff&titlebgcol=%23f1eded&titletxtcol=%23000000&itembgcol=%23ffffff&itemtxtcol=%23000000&ctl=0"></iframe>
     <iframe width="30%" height="750" class="rssdog" src="https://www.rssdog.com/index.php?url=https%3A%2F%2Fnews.yahoo.co.jp%2Frss%2Ftopics%2Ftop-picks.xml&mode=html&showonly=&maxitems=0&showdescs=1&desctrim=0&descmax=0&tabwidth=100%25&showdate=1&utf8=1&linktarget=_blank&bordercol=%23d4d0c8&headbgcol=%23999999&headtxtcol=%23ffffff&titlebgcol=%23f1eded&titletxtcol=%23000000&itembgcol=%23ffffff&itemtxtcol=%23000000&ctl=0"></iframe>
+</fieldset>
 
 </body>
 </html>
