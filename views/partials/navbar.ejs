@@ -1,0 +1,17 @@
+<nav>
+    <a href="/"><b>The Alkhayat Channel</b></a>
+    <% if (user){ %>
+    <a href="/auth/sign-out">Logout</a>
+
+    <% } else{ %>
+    <a href="/auth/sign-up">Sign up</a>
+    <a href="/auth/sign-in">Login</a>
+
+    <% } %>
+
+    <iframe align="right" src="https://free.timeanddate.com/clock/ianuag5h/tljp/tt0/tm3/td2/th1/ta1/tb2" frameborder="0" width="244" height="19"></iframe>
+</nav>
+
+<script type="module" src="https://widgets.tradingview-widget.com/w/en/tv-single-ticker.js"></script>
+
+<tv-single-ticker symbol="FX_IDC:USDJPY" style="width: 25%"></tv-single-ticker>

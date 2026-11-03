@@ -1,0 +1,18 @@
+html {
+  background-image: linear-gradient(to bottom, black, rgb(80, 80, 80));
+  color: white;
+}
+
+body {
+    text-align: justify;
+  font-family: "Murecho", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+button {
+  font-family: "Murecho", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  margin: 5px;
+}
