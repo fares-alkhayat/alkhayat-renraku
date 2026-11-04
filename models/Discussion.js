@@ -11,6 +11,12 @@ const discussionSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    discussionAbout: {
+        type: String
+    },
+    discussionRules: {
+        type: String
+    },
     messageCount: {
         type: Number
     },

@@ -11,7 +11,8 @@
 
         <h1>Select a channel</h1>
             <% for(let oneChannel of Channel){ %>
-    <p>Channel: <%= oneChannel.channelName %> released on <%= oneChannel.approvedAt %></p>
+    <p>Channel: <b><%= oneChannel.channelName %> </b></p>
+    <p>Approved for release on <%= oneChannel.approvedAt %></p>
     <a href="/channels/<%= oneChannel.channelID %>">Open Channel</a>
     <% } %>
 </body>
