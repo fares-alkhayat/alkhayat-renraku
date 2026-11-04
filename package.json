@@ -13,6 +13,7 @@
   "description": "Technologies used: HTML5, CSS3, JavaScript, Embedded JavaScript (EJS), MongoDB",
   "dependencies": {
     "@editorjs/editorjs": "^2.31.7",
+    "@vvo/tzdb": "^6.202.0",
     "bcrypt": "^6.0.0",
     "connect-mongo": "^6.0.0",
     "dotenv": "^17.4.2",
@@ -21,6 +22,7 @@
     "express-session": "^1.18.2",
     "method-override": "^3.0.0",
     "moment": "^2.31.0",
+    "moment-timezone": "^0.6.6",
     "mongoose": "^9.11.4",
     "morgan": "^1.12.1",
     "quill": "^2.0.2",

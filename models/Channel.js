@@ -23,6 +23,10 @@ const channelSchema = new mongoose.Schema({
     userCount: {
         type: Number
     },
+    approvedAt: {
+        type: Date,
+        required: true
+    }
 })
 
 const Channel = mongoose.model("Channel", channelSchema);

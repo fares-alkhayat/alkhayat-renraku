@@ -19,7 +19,7 @@ router.post("/sign-up", async (req, res) => {
     return res.send("Password and Confirm Password must match");
   }
 
-  const hashedPassword = bcrypt.hashSync(req.body.password, 10);
+  const hashedPassword = bcrypt.hashSync(req.body.password, 14);
   req.body.password = hashedPassword;
 
 
