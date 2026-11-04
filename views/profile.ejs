@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    
+    <%- include('./partials/navbar') %>
+
+<h1>Your Profile</h1>
+
+        <% if (user){ %>
+        <p>Name: <%= user.username %></p>
+        <p>Gender: <%= user.gender %></p>
+        <p>Date of Birth: <%= user.dob %></p>
+        <p>Country: <%= user.country %></p>
+        <p>Timezone: <%= user.timezone %></p>
+        <p>User ID: <%= user.userID %></p>
+        <% } %>
+</body>
+</html>

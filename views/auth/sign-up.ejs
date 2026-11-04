@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
     <title>Sign Up</title>
   </head>
   <body>
@@ -15,14 +16,14 @@
       <input type="password" name="password" id="password" />
       <label for="confirmPassword">Confirm Password:</label>
       <input type="password" name="confirmPassword" id="confirmPassword" />
-      <button type="submit">Sign up</button>
-      
+
       <p>Gender:</p>
         <input type="radio" id="male" name="gender" value="male">
         <label for="male">Male</label>
         <input type="radio" id="female" name="gender" value="female">
         <label for="female">Female</label>
-
+      <p>About:</p>
+      <textarea rows="25" cols="100" wrap="soft"></textarea>
       <p>Date of Birth:</p>
         <input type="date" id="dob" name="dob">
       <p>You must be at least 13 years old to register into the system.</p>
@@ -241,7 +242,7 @@
 </select>
 <!-- total group - 6 -->
       <p>Timezone:</p>
-      <select name="timezone">
+      <select name="timezone" id="timezone">
     <option value="Pacific/Midway">(UTC-11:00) Midway Island, American Samoa</option>
     <option value="Pacific/Honolulu">(UTC-10:00) Hawaii</option>
     <option value="America/Anchorage">(UTC-08:00) Alaska</option>
@@ -345,6 +346,10 @@
     <option value="Pacific/Tongatapu">(UTC+13:00) Nuku'alofa</option>
     <option value="Pacific/Apia">(UTC+14:00) Samoa</option>
 </select>
+        <button type="submit">Sign up</button>
+        <p></p>
     </form>
+
+
   </body>
 </html>

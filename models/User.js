@@ -1,11 +1,21 @@
 const mongoose = require("mongoose");
+const uuidv7 = require("uuidv7")
 
 const userSchema = new mongoose.Schema({
+  userID: {
+    type: String,
+    required: true,
+    default: () => uuidv7.uuidv7(),
+    index: { unique: true }
+  },
   username: {
     type: String,
     required: true,
     unique: true,
     trim: true
+  },
+  about: {
+    type: String
   },
   password: {
     type: String,
@@ -25,7 +35,7 @@ const userSchema = new mongoose.Schema({
   },
   timezone: {
   }
-}, {timestamps: true});
+},{timestamps: true});
 
 const User = mongoose.model("User", userSchema);
 
