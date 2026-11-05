@@ -37,8 +37,14 @@ router.get('/:channelID/:subchannelID/:discussionID/messages',async (req,res)=>{
     console.log(allMessages);
     res.render('messages.ejs',{Message: allMessages})})
 
-router.get('/channels/:channelID/create-subchannel',(req,res)=>{
+router.get('/create-subchannel',(req,res)=>{
     res.render('create-subchannel.ejs')})
+
+router.get('/create-discussion',(req,res)=>{
+    res.render('create-discussion.ejs')})
+
+// router.get('/channels/:channelID/create-subchannel',(req,res)=>{
+//    res.render('create-subchannel.ejs')})
 
 router.post('/channels/:channelID/create-subchannel', async (req,res)=>{
     const createSubchannel = await Subchannel.create({

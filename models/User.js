@@ -33,7 +33,11 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  language: {
+    type: String
+  },
   timezone: {
+    type: String
   }
 },{timestamps: true});
 
