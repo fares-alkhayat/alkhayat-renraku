@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const uuidv7 = require("uuidv7")
 
 const messageSchema = new mongoose.Schema({
       messageID: {
@@ -27,7 +28,11 @@ const messageSchema = new mongoose.Schema({
     voteCount: {
         type: Number
     },
-})
+    discussionRef: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Discussion"
+    },
+},{timestamps:true})
 
 const Message = mongoose.model("Message", messageSchema);
 

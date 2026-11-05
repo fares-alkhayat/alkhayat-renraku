@@ -8,8 +8,16 @@
 </head>
 <body>
         <%- include('./partials/navbar') %>
-        <br>
-        <a href="/create-subchannel">Create Subchannel</a>
+        <a href="/channels/<%= channelId %>/create-subchannel">Create Subchannel</a>
 
+
+    <% for(let oneSubchannel of Subchannel){ %>
+    <fieldset>
+    <p>Subchannel: <b><%= oneSubchannel.subchannelName %> </b></p>
+    <p>Created by <%= oneSubchannel.subchannelOwner %> at <%= oneSubchannel.createdAt %></p>
+    <a href="/channels/<%= oneSubchannel.subchannelID %>">Open Subchannel</a>
+    </fieldset>
+    <% } %>
+    
 </body>
 </html>

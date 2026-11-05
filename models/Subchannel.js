@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const uuidv7 = require("uuidv7")
 
 const subchannelSchema = new mongoose.Schema({
       subchannelID: {
@@ -10,6 +11,10 @@ const subchannelSchema = new mongoose.Schema({
     subchannelName: {
         type: String,
         required: true,
+    },
+    subchannelOwner: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
     },
     subchannelAbout: {
         type: String
@@ -29,11 +34,11 @@ const subchannelSchema = new mongoose.Schema({
     userCount: {
         type: Number
     },
-    approvedAt: {
-        type: Date,
-        required: true
-    }
-})
+    channelRef: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Channel"
+    },
+},{timestamps:true})
 
 const Subchannel = mongoose.model("Subchannel", subchannelSchema);
 

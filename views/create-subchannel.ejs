@@ -9,13 +9,13 @@
 <body>
         <%- include('./partials/navbar') %>
         <h1>Create a Subchannel</h1>
-        <form action="/create-subchannel" method="post">
+
+        <form action="/channels/:channelID/create-subchannel" method="post">
         <label for="subchannelName">Subchannel Name:</label>
         <input type="text" name="subchannelName" id="subchannelName"/>
         <label for="subchannelName">Channel ID:</label>
-        <input type="text" name="channelID" id="channelID"/>
-        <p>Description:</p><textarea for="subchannelAbout" name="subchannelAbout" id="subchannelAbout" rows="25" cols="50"></textarea>
-        <p>Rules:</p><textarea for="subchannelRules" name="subchannelRules" id="subchannelRules" rows="25" cols="50"></textarea>
+        <p>Description:</p><textarea for="subchannelAbout" name="subchannelAbout" id="subchannelAbout" rows="12" cols="70"></textarea>
+        <p>Rules:</p><textarea for="subchannelRules" name="subchannelRules" id="subchannelRules" rows="12" cols="70"></textarea><br>
         <button type="submit">Create Subchannel</button>
         </form>
 </body>

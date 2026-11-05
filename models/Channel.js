@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const uuidv7 = require("uuidv7")
 
 const channelSchema = new mongoose.Schema({
       channelID: {
@@ -27,7 +28,7 @@ const channelSchema = new mongoose.Schema({
         type: Date,
         required: true
     }
-})
+},{timestamps:true})
 
 const Channel = mongoose.model("Channel", channelSchema);
 
