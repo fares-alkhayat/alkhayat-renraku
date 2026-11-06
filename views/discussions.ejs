@@ -8,6 +8,14 @@
 </head>
 <body>
         <%- include('./partials/navbar') %>
+        <a href="/create-discussion">Create Discussion</a>
 
+        <% for(let oneDiscussion of Discussion){ %>
+    <fieldset>
+    <p>Discussion: <b><%= oneDiscussion.discussionName %> </b></p>
+    <p>Created by <%= oneDiscussion.discussionOwner %> at <%= oneDiscussion.createdAt %></p>
+    <a href="/channels/discussion=<%= oneDiscussion.discussionID %>">Open Discussion</a>
+    </fieldset>
+    <% } %>
 </body>
 </html>

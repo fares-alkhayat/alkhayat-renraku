@@ -8,6 +8,14 @@
 </head>
 <body>
         <%- include('./partials/navbar') %>
+        <a href="/create-message">Create Message</a>
 
+        <% for(let oneMessage of Message){ %>
+    <fieldset>
+    <p>Message: <b><%= oneMessage.messageName %> </b></p>
+    <p>Created by <%= oneMessage.messageName %> at <%= oneMessage.createdAt %></p>
+    <a href="/channels/message=<%= oneMessage.messageID %>">Open Message</a>
+    </fieldset>
+    <% } %>
 </body>
 </html>

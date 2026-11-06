@@ -27,15 +27,17 @@ router.get('/channels/:channelID',async (req,res)=>{
     console.log(allSubchannels);
     res.render('subchannels.ejs',{Subchannel: allSubchannels, channelId: req.params.channelID})})
 
-router.get('/:channelID/:subchannelID',async (req,res)=>{
+router.get('/channels/subchannel=:subchannelID',async (req,res)=>{
+    const Subchannel = await Subchannel.find({channelRef: channel.channelID});
     const allDiscussions = await Discussion.find({subchannelRef: req.params.subchannelID});
     console.log(allDiscussions);
-    res.render('discussions.ejs',{Discussion: allDiscussions})})
+    res.render('discussions.ejs',{Discussion: allDiscussions, subchannelId: req.params.subchannelID})})
 
-router.get('/:channelID/:subchannelID/:discussionID/messages',async (req,res)=>{
+router.get('/:channels/discussion=:discussionID',async (req,res)=>{
+    const Discussion = await Discussion.find({discussionRef: req.params.discussionID});
     const allMessages = await Message.find({discussionRef: req.params.discussionID});
     console.log(allMessages);
-    res.render('messages.ejs',{Message: allMessages})})
+    res.render('messages.ejs',{Message: allMessages, discussionId: req.params.discussionID})})
 
 router.get('/create-subchannel',(req,res)=>{
     res.render('create-subchannel.ejs')})
