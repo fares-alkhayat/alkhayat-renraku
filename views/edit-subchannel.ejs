@@ -8,7 +8,21 @@
 </head>
 <body>
         <%- include('./partials/navbar') %>
+                <h1>Edit a Subchannel</h1>
 
+        <form action="/channels/subchannel=:<%= Subchannel.subchannelID %>/edit?_method=PUT" method="post">
+        <label for="subchannelName">Discussion Name:</label>
+        <input type="text" name="discussionName" id="discussionName"/>
+        <br><label for="subchannelID">Subchannel ID:</label>
+        <input type="text" name="subchannelID" id="subchannelID"/>
+        <p>Description:</p><textarea for="subchannelAbout" name="subchannelAbout" id="subchannelAbout" rows="12" cols="70"></textarea>
+        <br>Genre:<input type="text" name="genre" id="genre"/>
+        <br>Tags:<input type="text" name="tags" id="tags"/>
+        <button type="submit">Edit Subchannel</button>
+        </form>
+
+        <form action="/channels/subchannel=:<%= Subchannel.subchannelID %>/edit?_method=DELETE" method="post">
+        <button>Delete Subchannel</button>
         </form>
 </body>
 </html>

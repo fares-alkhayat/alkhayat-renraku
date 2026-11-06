@@ -9,5 +9,15 @@
 <body>
         <%- include('./partials/navbar') %>
 
+
+        <form action="/channels/subchannel=:subchannelID/discussion=:discussionID/create-message" method="post">
+        <label for="messageTitle">Message Title:</label>
+        <input type="text" name="messageTitle" id="messageTitle"/>
+        <br><label for="discussionID">Discussion ID:</label>
+        <input type="text" name="discussionID" id="discussionID"/>
+        <p>Body Text:</p><textarea for="messageBody" name="messageBody" id="messageBody" rows="12" cols="70"></textarea>
+        <button type="submit">Create Message</button>
+        </form>
+
 </body>
 </html>

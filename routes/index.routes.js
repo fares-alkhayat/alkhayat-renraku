@@ -33,7 +33,7 @@ router.get('/channels/subchannel=:subchannelID',async (req,res)=>{
     console.log(allDiscussions);
     res.render('discussions.ejs',{Discussion: allDiscussions, subchannelId: req.params.subchannelID})})
 
-router.get('/:channels/discussion=:discussionID',async (req,res)=>{
+router.get('/channels/subchannel=:subchannelID/discussion=:discussionID',async (req,res)=>{
     const discussions = await Discussion.find({discussionRef: req.params.discussionID});
     const allMessages = await Message.find({discussionRef: discussions.discussionID});
     console.log(allMessages);
@@ -42,10 +42,10 @@ router.get('/:channels/discussion=:discussionID',async (req,res)=>{
 router.get('/create-subchannel',(req,res)=>{
     res.render('create-subchannel.ejs')})
 
-router.get('/create-discussion',(req,res)=>{
+router.get('/channels/subchannel=:subchannelID/create-discussion',(req,res)=>{
     res.render('create-discussion.ejs')})
 
-router.get('/create-message',(req,res)=>{
+router.get('/channels/subchannel=:subchannelID/discussion=:discussionID/create-message',(req,res)=>{
     res.render('create-message.ejs')})
 // router.get('/channels/:channelID/create-subchannel',(req,res)=>{
 //    res.render('create-subchannel.ejs')})
@@ -60,7 +60,7 @@ router.post('/channels/create-subchannel', async (req,res)=>{
     res.redirect('/channels/:channelID/')
 })
 
-router.post('/channels/create-discussion', async (req,res)=>{
+router.post('/channels/subchannel=:subchannelID/create-discussion', async (req,res)=>{
     const createDiscussion = await Discussion.create({
     discussionName: req.body.discussionName,
     discussionAbout: req.body.discussionAbout,
@@ -78,7 +78,52 @@ router.post('/channels/create-message', async (req,res)=>{
     messageBody: req.body.messageBody,
     discussionRef: req.body.discussionRef
 })
-    res.redirect('/channels/discussion=:discussionID/')
+    res.redirect('/channels/subchannel=:channelID/discussion=:discussionID/')
+})
+
+router.post('/channels/subchannel=:subchannelID', async (req,res)=>{
+    await Subchannel.findByIdAndDelete(req.params._id)
+    res.redirect('/channels/:channelID/')
+})
+
+router.post('/channels/subchannel=:subchannelID/discussion=:discussionID', async (req,res)=>{
+    await Discussion.findByIdAndDelete(req.params._id)
+    res.redirect('/channels/subchannel=:subchannelID/')
+})
+
+router.post('/channels/subchannel=:subchannelID/discussion=:discussionID/message=:messageID', async (req,res)=>{
+    await Message.findByIdAndDelete(req.params._id)
+    res.redirect('/channels/subchannel=:subchannelID/discussion=:discussionID')
+})
+
+router.get('/channels/subchannel=:subchannelID/edit', async (req,res)=>{
+    const foundSubchannel = await Subchannel.findById(req.params._id)
+    res.render('edit-subchannel.ejs',{Subchannel: foundSubchannel})
+})
+
+router.get('/channels/subchannel=:subchannelID/discussion=:discussionID/edit', async (req,res)=>{
+    const foundDiscussion = await Discussion.findById(req.params._id)
+    res.render('edit-discussion.ejs',{Discussion: foundDiscussion})
+})
+
+router.get('/channels/subchannel=:subchannelID/discussion=:discussionID/message=:messageID/edit', async (req,res)=>{
+    const foundMessage = await Message.findById(req.params._id)
+    res.render('edit-message.ejs',{Message: foundMessage})
+})
+
+router.post('/channels/subchannel=:subchannelID', async (req,res)=>{
+    const updatedSubchannel = await Subchannel.findByIdAndUpdate(req.params._id, req.body)
+    res.redirect('/channels/:channelID/')
+})
+
+router.post('/channels/subchannel=:subchannelID/discussion=:discussionID', async (req,res)=>{
+    const updatedDiscussion = await Discussion.findByIdAndUpdate(req.params._id, req.body)
+    res.redirect('/channels/subchannel=:subchannelID/')
+})
+
+router.post('/channels/subchannel=:subchannelID/discussion=:discussionID/message=:messageID', async (req,res)=>{
+    const updatedMessage = await Message.findByIdAndUpdate(req.params._id, req.body)
+    res.redirect('/channels/subchannel=:subchannelID/discussion=:discussionID')
 })
 
 router.get('/all-discussions',(req,res)=>{
