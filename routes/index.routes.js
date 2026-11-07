@@ -82,48 +82,48 @@ router.post('/channels/create-message', async (req,res)=>{
 })
 
 router.post('/channels/subchannel=:subchannelID', async (req,res)=>{
-    await Subchannel.findByIdAndDelete(req.params._id)
+    await Subchannel.findOneAndDelete({subchannelID: req.params.subchannelID})
     res.redirect('/channels/:channelID/')
 })
 
 router.post('/channels/subchannel=:subchannelID/discussion=:discussionID', async (req,res)=>{
-    await Discussion.findByIdAndDelete(req.params._id)
+    await Discussion.findOneAndDelete({discussionID: req.params.discussionID})
     res.redirect('/channels/subchannel=:subchannelID/')
 })
 
 router.post('/channels/subchannel=:subchannelID/discussion=:discussionID/message=:messageID', async (req,res)=>{
-    await Message.findByIdAndDelete(req.params._id)
+    await Message.findOneAndDelete({messageID: req.params.messageID})
     res.redirect('/channels/subchannel=:subchannelID/discussion=:discussionID')
 })
 
 router.get('/channels/subchannel=:subchannelID/edit', async (req,res)=>{
-    const foundSubchannel = await Subchannel.findById(req.params._id)
+    const foundSubchannel = await Subchannel.find({subchannelID: req.params.subchannelID})
     res.render('edit-subchannel.ejs',{Subchannel: foundSubchannel})
 })
 
 router.get('/channels/subchannel=:subchannelID/discussion=:discussionID/edit', async (req,res)=>{
-    const foundDiscussion = await Discussion.findById(req.params._id)
+    const foundDiscussion = await Discussion.find({discussionID: req.params.discussionID})
     res.render('edit-discussion.ejs',{Discussion: foundDiscussion})
 })
 
 router.get('/channels/subchannel=:subchannelID/discussion=:discussionID/message=:messageID/edit', async (req,res)=>{
-    const foundMessage = await Message.findById(req.params._id)
+    const foundMessage = await Message.find({messageID: req.params.messageID})
     res.render('edit-message.ejs',{Message: foundMessage})
 })
 
 router.post('/channels/subchannel=:subchannelID', async (req,res)=>{
-    const updatedSubchannel = await Subchannel.findByIdAndUpdate(req.params._id, req.body)
-    res.redirect('/channels/:channelID/')
+    const updatedSubchannel = await Subchannel.findOneAndUpdate({subchannelID: req.params.subchannelID})
+    res.redirect('/channels/:channelID/',{Subchannel: updatedSubchannel})
 })
 
 router.post('/channels/subchannel=:subchannelID/discussion=:discussionID', async (req,res)=>{
-    const updatedDiscussion = await Discussion.findByIdAndUpdate(req.params._id, req.body)
-    res.redirect('/channels/subchannel=:subchannelID/')
+    const updatedDiscussion = await Discussion.findOneAndUpdate({discussionID: req.params.discussionID})
+    res.redirect('/channels/subchannel=:subchannelID/', {Discussion: updatedDiscussion})
 })
 
 router.post('/channels/subchannel=:subchannelID/discussion=:discussionID/message=:messageID', async (req,res)=>{
-    const updatedMessage = await Message.findByIdAndUpdate(req.params._id, req.body)
-    res.redirect('/channels/subchannel=:subchannelID/discussion=:discussionID')
+    const updatedMessage = await Message.findOneAndUpdate({messageID: req.params.messageID})
+    res.redirect('/channels/subchannel=:subchannelID/discussion=:discussionID', {Message: updatedMessage})
 })
 
 router.get('/all-discussions',(req,res)=>{

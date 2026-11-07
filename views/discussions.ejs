@@ -14,7 +14,9 @@
     <fieldset>
     <p>Discussion: <b><%= oneDiscussion.discussionName %> </b></p>
     <p>Created by <%= oneDiscussion.discussionOwner %> at <%= oneDiscussion.createdAt %></p>
-    <a href="/channels/discussion=<%= oneDiscussion.discussionID %>">Open Discussion</a>
+    <a href="/channels/subchannel=:subchannelID/discussion=<%= oneDiscussion.discussionID %>">Open Discussion</a>
+    <a href="/channels/subchannel=:subchannelID/discussion=<%= oneDiscussion.discussionID %>/edit">Edit/Delete Discussion</a>
+
     </fieldset>
     <% } %>
 </body>
