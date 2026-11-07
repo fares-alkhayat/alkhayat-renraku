@@ -22,12 +22,14 @@ const subchannelSchema = new mongoose.Schema({
     subchannelRules: {
         type: String
     },
-    messageCount: {
-        type: Number
-    },
-    followCount: {
-        type: Number
-    },
+    messageCount: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Message"
+    }],
+    followCount: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+    }],
     discussionCount: {
         type: Number
     },

@@ -22,26 +22,31 @@ const discussionSchema = new mongoose.Schema({
     discussionRules: {
         type: String
     },
-    messageCount: {
-        type: Number,
-    },
-    followCount: {
-        type: Number
-    },
-    upvoteCount: {
-        type: Number
-    },
-    downvoteCount: {
-        type: Number
-    },
+    messageCount: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Message",
+    }],
+    followCount: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+    }],
+    upvoteCount: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+    }],
+    downvoteCount: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+    }],
     voteCount: {
         type: Number
     },
-    userCount: {
-        type: Number
-    },
+    userCount: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+    }],
     tags: {
-        type: [String]
+        type: String
     },
     genre: {
         type: String

@@ -19,12 +19,14 @@ const messageSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
     },
-    upvoteCount: {
-        type: Number
-    },
-    downvoteCount: {
-        type: Number
-    },
+    upvoteCount: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User",
+        }],
+    downvoteCount: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User",
+        }],
     voteCount: {
         type: Number
     },

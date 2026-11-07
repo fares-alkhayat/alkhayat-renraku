@@ -163,6 +163,182 @@ router.post('/channels/subchannel=:subchannelID/discussion=:discussionID/message
     res.redirect('/channels/subchannel=:subchannelID/discussion=:discussionID', {Message: updatedMessage})
 })
 
+router.post('/channels/subchannel=:subchannelID/discussion=:discussionID/upvoted-by/:userID', async (req, res) => {
+  try {
+    console.log('userID: ', req.params.userID);
+    console.log('discussionID: ', req.params.discussionID);
+    res.send(`Request to upvote ${req.params.discussionID}`);
+  } catch (error) {
+    console.log(error);
+    res.redirect('/');
+  }
+
+});
+
+
+router.post('/channels/subchannel=:subchannelID/discussion=:discussionID/upvoted-by/:userID', async (req, res) => {
+  try {
+    await Listing.findByIdAndUpdate(req.params.upvoteCount, {
+      $push: { upvoteCount: req.params.userID },
+    });
+    res.redirect(`/channels/subchannel=:subchannelID/discussion=:discussionID/${req.params.discussionID}`);
+  } catch (error) {
+    console.log(error);
+    res.redirect('/');
+  }
+});
+
+router.get('/channels/subchannel=:subchannelID/discussion=:discussionID/upvoted-by/:userID', async (req, res) => {
+  try {
+    const populatedUpvotes = await Discussion.findOne(req.params.discussionID).populate('owner');
+
+    const userHasUpvoted = populatedUpvotes.upvotedByUsers.some((user) =>
+      user.equals(req.session.userID)
+    );
+
+    res.render('/channels/subchannel=:subchannelID/discussion=:discussionID', {
+      discussion: populatedUpvotes,
+      userHasUpvoted: userHasUpvoted,
+    });
+
+  } catch (error) {
+    console.log(error);
+    res.redirect('/');
+  }
+});
+
+router.post('/channels/subchannel=:subchannelID/discussion=:discussionID/downvoted-by/:userID', async (req, res) => {
+  try {
+    console.log('userID: ', req.params.userID);
+    console.log('discussionID: ', req.params.discussionID);
+    res.send(`Request to downvote ${req.params.discussionID}`);
+  } catch (error) {
+    console.log(error);
+    res.redirect('/');
+  }
+
+});
+
+
+router.post('/channels/subchannel=:subchannelID/discussion=:discussionID/downvoted-by/:userID', async (req, res) => {
+  try {
+    await Listing.findByIdAndUpdate(req.params.downvoteCount, {
+      $push: { downvoteCount: req.params.userID },
+    });
+    res.redirect(`/channels/subchannel=:subchannelID/discussion=:discussionID/${req.params.discussionID}`);
+  } catch (error) {
+    console.log(error);
+    res.redirect('/');
+  }
+});
+
+router.get('/channels/subchannel=:subchannelID/discussion=:discussionID/downvoted-by/:userID', async (req, res) => {
+  try {
+    const populatedDownvotes = await Discussion.findOne(req.params.discussionID).populate('owner');
+
+    const userHasDownvoted = populatedDownvotes.downvotedByUsers.some((user) =>
+      user.equals(req.session.userID)
+    );
+
+    res.render('/channels/subchannel=:subchannelID/discussion=:discussionID/', {
+      discussion: populatedDownvotes,
+      userHasUpvoted: userHasDownvoted,
+    });
+
+  } catch (error) {
+    console.log(error);
+    res.redirect('/');
+  }
+});
+
+router.post('/channels/subchannel=:subchannelID/discussion=:discussionID/message=:messageID/upvoted-by/:userID', async (req, res) => {
+  try {
+    console.log('userID: ', req.params.userID);
+    console.log('messageID: ', req.params.messageID);
+    res.send(`Request to upvote ${req.params.messageID}`);
+  } catch (error) {
+    console.log(error);
+    res.redirect('/');
+  }
+
+});
+
+
+router.post('/channels/subchannel=:subchannelID/discussion=:discussionID/message=:messageID/upvoted-by/:userID', async (req, res) => {
+  try {
+    await Listing.findByIdAndUpdate(req.params.upvoteCount, {
+      $push: { upvoteCount: req.params.userID },
+    });
+    res.redirect(`/channels/subchannel=:subchannelID/discussion=:discussionID/${req.params.messageID}`);
+  } catch (error) {
+    console.log(error);
+    res.redirect('/');
+  }
+});
+
+router.get('/channels/subchannel=:subchannelID/discussion=:discussionID/message=:messageID/upvoted-by/:userID', async (req, res) => {
+  try {
+    const populatedUpvotes = await Message.findOne(req.params.messageID).populate('owner');
+
+    const userHasUpvoted = populatedUpvotes.upvotedByUsers.some((user) =>
+      user.equals(req.session.userID)
+    );
+
+    res.render('/channels/subchannel=:subchannelID/discussion=:discussionID/message=:messageID', {
+      message: populatedUpvotes,
+      userHasUpvoted: userHasUpvoted,
+    });
+
+  } catch (error) {
+    console.log(error);
+    res.redirect('/');
+  }
+});
+
+router.post('/channels/subchannel=:subchannelID/discussion=:discussionID/message=:messageID/downvoted-by/:userID', async (req, res) => {
+  try {
+    console.log('userID: ', req.params.userID);
+    console.log('messageID: ', req.params.messageID);
+    res.send(`Request to downvote ${req.params.messageID}`);
+  } catch (error) {
+    console.log(error);
+    res.redirect('/');
+  }
+
+});
+
+
+router.post('/channels/subchannel=:subchannelID/discussion=:discussionID/message=:messageID/downvoted-by/:userID', async (req, res) => {
+  try {
+    await Listing.findByIdAndUpdate(req.params.downvoteCount, {
+      $push: { downvoteCount: req.params.userID },
+    });
+    res.redirect(`/channels/subchannel=:subchannelID/discussion=:discussionID/${req.params.messageID}`);
+  } catch (error) {
+    console.log(error);
+    res.redirect('/');
+  }
+});
+
+router.get('/channels/subchannel=:subchannelID/discussion=:discussionID/message=:messageID/downvoted-by/:userID', async (req, res) => {
+  try {
+    const populatedDownvotes = await Message.findOne(req.params.messageID).populate('owner');
+
+    const userHasDownvoted = populatedDownvotes.downvotedByUsers.some((user) =>
+      user.equals(req.session.userID)
+    );
+
+    res.render('/channels/subchannel=:subchannelID/discussion=:discussionID/message=:messageID', {
+      message: populatedDownvotes,
+      userHasUpvoted: userHasDownvoted,
+    });
+
+  } catch (error) {
+    console.log(error);
+    res.redirect('/');
+  }
+});
+
 router.get('/all-discussions',(req,res)=>{
     res.render('all-discussions.ejs')
 })

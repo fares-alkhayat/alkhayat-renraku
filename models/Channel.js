@@ -12,18 +12,22 @@ const channelSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    messageCount: {
-        type: Number
-    },
-    followCount: {
-        type: Number
-    },
-    discussionCount: {
-        type: Number
-    },
-    userCount: {
-        type: Number
-    },
+    messageCount: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Message"
+    }],
+    followCount: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+    }],
+    discussionCount: [{
+    type: mongoose.Schema.Types.ObjectId,
+        ref: "Discussion"
+    }],
+    userCount: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+    }],
     approvedAt: {
         type: Date,
         required: true
