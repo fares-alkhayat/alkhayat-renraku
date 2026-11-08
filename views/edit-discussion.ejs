@@ -11,7 +11,7 @@
 
                 <h1>Edit a Discussion</h1>
 
-        <form action="/channels/subchannel=:subchannelID/discussion=:<%= Discussion.discussionID %>/edit?_method=PUT" method="post">
+        <form action="/channels/subchannel/:subchannelID/discussion/:<%= Discussion.discussionID %>/edit?_method=PUT" method="post">
         <label for="subchannelName">Discussion Name:</label>
         <input type="text" name="discussionName" id="discussionName"/>
         <br><label for="subchannelID">Subchannel ID:</label>
@@ -22,7 +22,7 @@
         <button type="submit">Edit Discussion</button>
         </form>
 
-            <form action="/channels/subchannel=:subchannelID/discussion=:<%= Discussion.discussionID %>/edit?_method=DELETE" method="post">
+            <form action="/channels/subchannel/:subchannelID/discussion/:<%= Discussion.discussionID %>/edit?_method=DELETE" method="post">
         <button>Delete Discussion</button>
     </form>
 </body>

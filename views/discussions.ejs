@@ -14,23 +14,25 @@
     <fieldset>
     <p>Discussion: <b><%= oneDiscussion.discussionName %> </b></p>
     <p>Created by <%= oneDiscussion.discussionOwner %> at <%= oneDiscussion.createdAt %></p>
-    <a href="/channels/subchannel=:subchannelID/discussion=<%= oneDiscussion.discussionID %>">Open Discussion</a>
-    <a href="/channels/subchannel=:subchannelID/discussion=<%= oneDiscussion.discussionID %>/edit">Edit/Delete Discussion</a>
+    <a href="/channels/subchannel/:subchannelID/discussion/<%= oneDiscussion.discussionID %>">Open Discussion</a>
+    <a href="/channels/subchannel/:subchannelID/discussion/<%= oneDiscussion.discussionID %>/edit">Edit/Delete Discussion</a>
 
-        <p><%= discussion.upvoteCount.length %> upvotes</p>
-    <form action="/channels/subchannel:=subchannelID/discussion=<%= discussionID %>/upvoted-by/<%= userID %>" method="POST">
+        <p><%= Discussion %> upvotes</p>
+    <form action="/channels/subchannel/:subchannelID/discussion/<%= oneDiscussion.discussionID %>/upvoted-by/<%= user.userID %>" method="POST">
     <button type="submit">Upvote</button>
-    <p><%= discussion.downvoteCount.length %> downvotes</p>
-    <form action="/channels/subchannel:=subchannelID/discussion=<%= discussionID %>/downvoted-by/<%= userID %>" method="POST">
+    <p><%= Discussion %> downvotes</p>
+    <form action="/channels/subchannel/:subchannelID/discussion/<%= oneDiscussion.discussionID %>/downvoted-by/<%= user.userID %>" method="POST">
     <button type="submit">Downvote</button>
 
-    <% if (userHasUpvoted) { %>
+<!---
+    <% // if (userHasUpvoted) { %>
 <p>You've upvoted this discussion.</p>
-<% } else if (userHasDownvoted) { %>
+<% // } else if (userHasDownvoted) { %>
 <p>You've downvoted this discussion.</p>
-<% } %>
+<% // } %>
+-->
 
     </fieldset>
-    <% } %>
+    <% // } %>
 </body>
 </html>

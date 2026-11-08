@@ -10,7 +10,7 @@
         <%- include('./partials/navbar') %>
                 <h1>Edit a Message</h1>
 
-        <form action="/channels/subchannel=:subchannelID/discussion=:discussionID/message=<%= Message.messageID %>/edit?_method=PUT" method="post">
+        <form action="/channels/subchannel/:subchannelID/discussion/:discussionID/message/<%= Message.messageID %>/edit?_method=PUT" method="post">
         <label for="subchannelName">Discussion Name:</label>
         <input type="text" name="discussionName" id="discussionName"/>
         <br><label for="subchannelID">Subchannel ID:</label>
@@ -21,7 +21,7 @@
         <button type="submit">Edit Message</button>
         </form>
 
-        <form action="/channels/subchannel=:subchannelID/discussion=:discussionID/message=<%= Message.messageID %>/edit?_method=DELETE" method="post">
+        <form action="/channels/subchannel/:subchannelID/discussion/:discussionID/message/<%= Message.messageID %>/edit?_method=DELETE" method="post">
         <button>Delete Message</button>
     </form>
 </body>

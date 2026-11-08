@@ -10,7 +10,7 @@
         <%- include('./partials/navbar') %>
 
 
-        <form action="/channels/subchannel=:subchannelID/discussion=:discussionID/create-message" method="post">
+        <form action="/channels/subchannel/:subchannelID/discussion/:discussionID/create-message" method="post">
         <label for="messageTitle">Message Title:</label>
         <input type="text" name="messageTitle" id="messageTitle"/>
         <br><label for="discussionID">Discussion ID:</label>

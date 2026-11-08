@@ -12,9 +12,21 @@ Latest version: 0.0.0 (under development)
 
 ## Overview
 
+Welcome!
+
+This is the "Alkhayat Renraku", a fun and safe place for people to communicate with each other via an instant messaging forum.
+
+The word "renraku" (連絡、れんらく) means "to contact, communicate or to get into touch with someone" in Japanese, which is not only the name of this service but also serves it as its prime purpose.
+
+In this service, you can send messages within discussions sorted within channels and subchannels.
+
 ## Screenshots
 
 ## Getting Started
+
+ATTENTION: Registration of a user is required to send, edit and delete messages. Unregistered users and guests are limited to viewing messages only.
+
+To register, a user needs to be as of the minimum age of utilising SNS in your country. If your country does not impose a minimum age, then the base requirement of registration to Alkhayat Renraku is at least 13 years old by default. Please consult the laws, regulations and the government of your country before registering.
 
 ## User Stories
 
@@ -34,6 +46,14 @@ Latest version: 0.0.0 (under development)
 | DELETE | /listings/:id | Delete listing |
 
 ## Features
+
+1. Sending, viewing, editing and deleting messages.
+
+2. Messages are sorted through channels, subchannels and discussions.
+
+3. Messages and discussions can be upvoted and downvoted to determine the overall sentiment of the audience.
+
+4. The homepage contains news-related features such as foreign exchange, weather and RSS news feeds (limited to Japan and Star Trek only).
 
 ## Future Enhancements
 
