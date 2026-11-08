@@ -203,30 +203,20 @@ router.get('/channels/subchannel/:subchannelID/discussion/:discussionID/upvoted-
   }
 });
 
-router.post('/channels/subchannel/:subchannelID/discussion/:discussionID/downvoted-by/:userID', async (req, res) => {
+router.post('/channels/subchannel/:subchannelID/discussion/:discussionID/downvote/', async (req, res) => {
   try {
-    console.log('userID: ', req.params.userID);
-    console.log('discussionID: ', req.params.discussionID);
-    res.send(`Request to downvote ${req.params.discussionID}`);
-  } catch (error) {
-    console.log(error);
-    res.redirect('/');
-  }
+    console.log('DOWNVOTE')
+      const discussion = await Discussion.findOne({discussionID: req.params.discussionID})
 
-});
-
-
-router.post('/channels/subchannel/:subchannelID/discussion/:discussionID/downvoted-by/:userID', async (req, res) => {
-  try {
-    await Listing.findByIdAndUpdate(req.params.downvoteCount, {
-      $push: { downvoteCount: req.params.userID },
+    await Discussion.findByIdAndUpdate(discussion._id, {
+      $push: { downvoteCount: req.session.user._id },
     });
-    res.redirect(`/channels/subchannel/:subchannelID/discussion/:discussionID/${req.params.discussionID}`);
+    res.redirect(`/`);
   } catch (error) {
     console.log(error);
-    res.redirect('/');
-  }
+ }
 });
+
 
 router.get('/channels/subchannel/:subchannelID/discussion/:discussionID/downvoted-by/:userID', async (req, res) => {
   try {
@@ -236,9 +226,9 @@ router.get('/channels/subchannel/:subchannelID/discussion/:discussionID/downvote
       user.equals(req.session.userID)
     );
 
-    res.render('/channels/subchannel/:subchannelID/discussion/:discussionID/', {
+    res.render('/channels/subchannel/:subchannelID/discussion/:discussionID', {
       discussion: populatedDownvotes,
-      userHasUpvoted: userHasDownvoted,
+      userHasDownvoted: userHasDownvoted,
     });
 
   } catch (error) {
@@ -247,34 +237,23 @@ router.get('/channels/subchannel/:subchannelID/discussion/:discussionID/downvote
   }
 });
 
-router.post('/channels/subchannel/:subchannelID/discussion/:discussionID/message/:messageID/upvoted-by/:userID', async (req, res) => {
+router.post('/channels/subchannel/:subchannelID/discussion/:discussionID/message/:messageID/upvote/', async (req, res) => {
   try {
-    console.log('userID: ', req.params.userID);
-    console.log('messageID: ', req.params.messageID);
-    res.send(`Request to upvote ${req.params.messageID}`);
-  } catch (error) {
-    console.log(error);
-    res.redirect('/');
-  }
+    console.log('UPVOTE')
+      const discussion = await Message.findOne({messageID: req.params.messageID})
 
-});
-
-
-router.post('/channels/subchannel/:subchannelID/discussion/:discussionID/message/:messageID/upvoted-by/:userID', async (req, res) => {
-  try {
-    await Listing.findByIdAndUpdate(req.params.upvoteCount, {
-      $push: { upvoteCount: req.params.userID },
+    await Message.findByIdAndUpdate(message._id, {
+      $push: { upvoteCount: req.session.user._id },
     });
-    res.redirect(`/channels/subchannel/:subchannelID/discussion/:discussionID/${req.params.messageID}`);
+    res.redirect(`/`);
   } catch (error) {
     console.log(error);
-    res.redirect('/');
-  }
+ }
 });
 
 router.get('/channels/subchannel/:subchannelID/discussion/:discussionID/message/:messageID/upvoted-by/:userID', async (req, res) => {
   try {
-    const populatedUpvotes = await Message.findOne(req.params.messageID).populate('owner');
+    const populatedUpvotes = await Message.findOne(req.params.discussionID).populate('owner');
 
     const userHasUpvoted = populatedUpvotes.upvotedByUsers.some((user) =>
       user.equals(req.session.userID)
@@ -291,32 +270,22 @@ router.get('/channels/subchannel/:subchannelID/discussion/:discussionID/message/
   }
 });
 
-router.post('/channels/subchannel/:subchannelID/discussion/:discussionID/message/:messageID/downvoted-by/:userID', async (req, res) => {
+router.post('/channels/subchannel/:subchannelID/discussion/:discussionID/message/:messageID/downvote/', async (req, res) => {
   try {
-    console.log('userID: ', req.params.userID);
-    console.log('messageID: ', req.params.messageID);
-    res.send(`Request to downvote ${req.params.messageID}`);
-  } catch (error) {
-    console.log(error);
-    res.redirect('/');
-  }
+    console.log('DOWNVOTE')
+      const discussion = await Message.findOne({messageID: req.params.messageID})
 
-});
-
-
-router.post('/channels/subchannel/:subchannelID/discussion/:discussionID/message/:messageID/downvoted-by/:userID', async (req, res) => {
-  try {
-    await Listing.findByIdAndUpdate(req.params.downvoteCount, {
-      $push: { downvoteCount: req.params.userID },
+    await Message.findByIdAndUpdate(message._id, {
+      $push: { downvoteCount: req.session.user._id },
     });
-    res.redirect(`/channels/subchannel/:subchannelID/discussion/:discussionID/${req.params.messageID}`);
+    res.redirect(`/`);
   } catch (error) {
     console.log(error);
-    res.redirect('/');
-  }
+ }
 });
 
-router.get('/channels/subchannel/:subchannelID/discussion/:discussionID/message/:messageID/downvoted-by/:userID', async (req, res) => {
+
+router.get('/channels/subchannel/:subchannelID/discussion/:discussionID/message/:messageID//downvoted-by/:userID', async (req, res) => {
   try {
     const populatedDownvotes = await Message.findOne(req.params.messageID).populate('owner');
 
@@ -324,9 +293,9 @@ router.get('/channels/subchannel/:subchannelID/discussion/:discussionID/message/
       user.equals(req.session.userID)
     );
 
-    res.render('/channels/subchannel/:subchannelID/discussion/:discussionID/message/:messageID', {
+    res.render('/channels/subchannel/:subchannelID/discussion/:discussionID/message/:messageID/', {
       message: populatedDownvotes,
-      userHasUpvoted: userHasDownvoted,
+      userHasDownvoted: userHasDownvoted,
     });
 
   } catch (error) {
