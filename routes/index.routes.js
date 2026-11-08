@@ -309,5 +309,7 @@ router.get('/channels/subchannel/:subchannelID/discussion/:discussionID/message/
   }
 });
 
-
+router.get('/my-contributions', (req,res)=>{
+  res.render('my-contributions.ejs')
+})
 module.exports = router;
