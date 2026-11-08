@@ -9,5 +9,29 @@
 <body>
         <%- include('./partials/navbar') %>
 
+        <% for(let oneDiscussion of Discussion){ %>
+    <fieldset>
+    <p>Discussion: <b><%= oneDiscussion.discussionName %> </b></p>
+    <p>Created by <%= oneDiscussion.discussionOwner %> at <%= oneDiscussion.createdAt %></p>
+    <a href="/channels/subchannel/<%= subchannelId %>/discussion/<%= oneDiscussion.discussionID %>">Open Discussion</a>
+    <a href="/channels/subchannel/<%= subchannelId %>/discussion/<%= oneDiscussion.discussionID %>/edit">Edit/Delete Discussion</a>
+
+        <p><%= Discussion.upvoteCount %> upvotes</p>
+    <form action="/channels/subchannel/<%= subchannelId %>/discussion/<%= oneDiscussion.discussionID %>/upvote" method="POST">
+    <button type="submit">Upvote</button>
+    <p><%= Discussion.downvoteCount %> downvotes</p>
+    <form action="/channels/subchannel/<%= subchannelId %>/discussion/<%= oneDiscussion.discussionID %>/downvoted-by/<%= user.userID %>" method="POST">
+    <button type="submit">Downvote</button>
+
+<!---
+    <% // if (userHasUpvoted) { %>
+<p>You've upvoted this discussion.</p>
+<% // } else if (userHasDownvoted) { %>
+<p>You've downvoted this discussion.</p>
+<% // } %>
+-->
+
+    </fieldset>
+    <% } %>
 </body>
 </html>

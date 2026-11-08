@@ -21,6 +21,11 @@ router.get('/channels', async (req,res)=>{
     console.log(allChannels);
     res.render('channels.ejs',{Channel: allChannels})})
 
+router.get('/all-discussions', async (req,res)=>{
+    const allDiscussions = await Discussion.find();
+    const subchannel = await Subchannel.findOne({subchannelID: req.params.subchannelID});
+    console.log(allDiscussions);
+    res.render('all-discussions.ejs',{Discussion: allDiscussions, subchannelId: req.params.subchannelID})})
 
 router.get('/channels/:channelID',async (req,res)=>{
   console.log('in channels route')
@@ -304,8 +309,5 @@ router.get('/channels/subchannel/:subchannelID/discussion/:discussionID/message/
   }
 });
 
-router.get('/all-discussions',(req,res)=>{
-    res.render('all-discussions.ejs')
-})
 
 module.exports = router;
