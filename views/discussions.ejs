@@ -8,20 +8,20 @@
 </head>
 <body>
         <%- include('./partials/navbar') %>
-        <a href="/create-discussion">Create Discussion</a>
+        <a href="/channels/subchannel/<%= subchannelId %>/create-discussion">Create Discussion</a>
 
         <% for(let oneDiscussion of Discussion){ %>
     <fieldset>
     <p>Discussion: <b><%= oneDiscussion.discussionName %> </b></p>
     <p>Created by <%= oneDiscussion.discussionOwner %> at <%= oneDiscussion.createdAt %></p>
-    <a href="/channels/subchannel/:subchannelID/discussion/<%= oneDiscussion.discussionID %>">Open Discussion</a>
-    <a href="/channels/subchannel/:subchannelID/discussion/<%= oneDiscussion.discussionID %>/edit">Edit/Delete Discussion</a>
+    <a href="/channels/subchannel/<%= subchannelId %>/discussion/<%= oneDiscussion.discussionID %>">Open Discussion</a>
+    <a href="/channels/subchannel/<%= subchannelId %>/discussion/<%= oneDiscussion.discussionID %>/edit">Edit/Delete Discussion</a>
 
-        <p><%= Discussion %> upvotes</p>
-    <form action="/channels/subchannel/:subchannelID/discussion/<%= oneDiscussion.discussionID %>/upvoted-by/<%= user.userID %>" method="POST">
+        <p><%= Discussion.upvoteCount %> upvotes</p>
+    <form action="/channels/subchannel/<%= subchannelId %>/discussion/<%= oneDiscussion.discussionID %>/upvote" method="POST">
     <button type="submit">Upvote</button>
-    <p><%= Discussion %> downvotes</p>
-    <form action="/channels/subchannel/:subchannelID/discussion/<%= oneDiscussion.discussionID %>/downvoted-by/<%= user.userID %>" method="POST">
+    <p><%= Discussion.downvoteCount %> downvotes</p>
+    <form action="/channels/subchannel/<%= subchannelId %>/discussion/<%= oneDiscussion.discussionID %>/downvoted-by/<%= user.userID %>" method="POST">
     <button type="submit">Downvote</button>
 
 <!---
@@ -33,6 +33,6 @@
 -->
 
     </fieldset>
-    <% // } %>
+    <% } %>
 </body>
 </html>

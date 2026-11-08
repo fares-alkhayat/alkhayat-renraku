@@ -24,15 +24,15 @@ router.get('/channels', async (req,res)=>{
 
 router.get('/channels/:channelID',async (req,res)=>{
   console.log('in channels route')
-    const channel = await Channel.find({channelID: req.params.channelID })
-    const allSubchannels = await Subchannel.find({channelRef: channel.channelID});
+    const channel = await Channel.findOne({channelID: req.params.channelID })
+    const allSubchannels = await Subchannel.find({channelRef: channel._id});
     console.log(allSubchannels);
     res.render('subchannels.ejs',{Subchannel: allSubchannels, channelId: req.params.channelID})})
 
 router.get('/channels/subchannel/:subchannelID',async (req,res)=>{
   console.log('in subcannel route')
-    const subchannel = await Subchannel.find({subchannelRef: req.params.subchannelID});
-    const allDiscussions = await Discussion.find({subchannelRef: subchannel.subchannelID});
+    const subchannel = await Subchannel.findOne({subchannelID: req.params.subchannelID});
+    const allDiscussions = await Discussion.find({subchannelRef: subchannel._id});
     console.log(allDiscussions);
     res.render('discussions.ejs',{Discussion: allDiscussions, subchannelId: req.params.subchannelID})})
 
@@ -42,44 +42,48 @@ router.get('/channels/subchannel/:subchannelID/discussion/:discussionID',async (
     console.log(allMessages);
     res.render('messages.ejs',{Message: allMessages, discussionId: req.params.discussionID})})
 
-router.get('/create-subchannel', isSignedIn, (req,res)=>{
-    res.render('create-subchannel.ejs')})
+router.get('/create-subchannel/:channelId', isSignedIn, (req,res)=>{
+    res.render('create-subchannel.ejs', {channelId: req.params.channelId})})
 
 router.get('/channels/subchannel/:subchannelID/create-discussion', isSignedIn, (req,res)=>{
-    res.render('create-discussion.ejs')})
+    res.render('create-discussion.ejs', {subchannelId: req.params.subchannelID})})
 
 router.get('/channels/subchannel/:subchannelID/discussion/:discussionID/create-message', isSignedIn, (req,res)=>{
     res.render('create-message.ejs')})
 // router.get('/channels/:channelID/create-subchannel',(req,res)=>{
 //    res.render('create-subchannel.ejs')})
 
-router.post('/channels/create-subchannel', isSignedIn, async (req,res)=>{
+router.post('/channels/:channelId/create-subchannel', isSignedIn, async (req,res)=>{
     const createSubchannel = await Subchannel.create({
     subchannelName: req.body.subchannelName,
     subchannelAbout: req.body.subchannelAbout,
     subchannelRules: req.body.subchannelRules,
+    subchannelOwner: req.session.user._id,
     channelRef: req.body.channelRef,
 })
-    res.redirect('/channels/:channelID/')
+    res.redirect('/channels/' + req.params.channelId)
 })
 
 router.post('/channels/subchannel/:subchannelID/create-discussion', isSignedIn, async (req,res)=>{
+  const subchannel = await Subchannel.findOne({subchannelID: req.params.subchannelID})
     const createDiscussion = await Discussion.create({
     discussionName: req.body.discussionName,
     discussionAbout: req.body.discussionAbout,
     discussionRules: req.body.discussionRules,
-    subchannelRef: req.body.subchannelRef,
+    discussionOwner: req.session.user._id,
     genre: req.body.genre,
     tags: req.body.tags,
+    subchannelRef: subchannel._id
 })
-    res.redirect('/channels/subchannel/:subchannelID/')
+    res.redirect('/channels/subchannel/' + subchannel.subchannelID)
 })
 
-router.post('/channels/create-message', isSignedIn, async (req,res)=>{
+router.post('/channels/subchannel/:subchannelID/discussion/:discussionID/create-message', isSignedIn, async (req,res)=>{
     const createMessage = await Message.create({
     messageTitle: req.body.messageTitle,
     messageBody: req.body.messageBody,
-    discussionRef: req.body.discussionRef
+    discussionRef: req.body.discussionRef,
+    messageOwner: user._id,
 })
     res.redirect('/channels/subchannel/:subchannelID/discussion/:discussionID/')
 })
@@ -165,29 +169,19 @@ router.post('/channels/subchannel/:subchannelID/discussion/:discussionID/message
     res.redirect('/channels/subchannel/:subchannelID/discussion/:discussionID', {Message: updatedMessage})
 })
 
-router.post('/channels/subchannel/:subchannelID/discussion/:discussionID/upvoted-by/:userID', async (req, res) => {
+
+router.post('/channels/subchannel/:subchannelID/discussion/:discussionID/upvote/', async (req, res) => {
   try {
-    console.log('userID: ', req.params.userID);
-    console.log('discussionID: ', req.params.discussionID);
-    res.send(`Request to upvote ${req.params.discussionID}`);
-  } catch (error) {
-    console.log(error);
-    res.redirect('/');
-  }
+    console.log('UPVOTE')
+      const discussion = await Discussion.findOne({discussionID: req.params.discussionID})
 
-});
-
-
-router.post('/channels/subchannel/:subchannelID/discussion/:discussionID/upvoted-by/:userID', async (req, res) => {
-  try {
-    await Listing.findByIdAndUpdate(req.params.upvoteCount, {
-      $push: { upvoteCount: req.params.userID },
+    await Discussion.findByIdAndUpdate(discussion._id, {
+      $push: { upvoteCount: req.session.user._id },
     });
-    res.redirect(`/channels/subchannel/:subchannelID/discussion/:discussionID/${req.params.discussionID}`);
+    res.redirect(`/`);
   } catch (error) {
     console.log(error);
-    res.redirect('/');
-  }
+ }
 });
 
 router.get('/channels/subchannel/:subchannelID/discussion/:discussionID/upvoted-by/:userID', async (req, res) => {

@@ -10,7 +10,7 @@
         <%- include('./partials/navbar') %>
         <h1>Create a Subchannel</h1>
 
-        <form action="/channels/:channelID/create-subchannel" method="post">
+        <form action="/channels/<%= channelId %>/create-subchannel" method="post">
         <label for="subchannelName">Subchannel Name:</label>
         <input type="text" name="subchannelName" id="subchannelName"/>
         <label for="channelRef">Channel to Assign:</label>

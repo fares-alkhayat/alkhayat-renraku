@@ -4,6 +4,7 @@ a {
     color: white;
     padding: 5px;
 }
+
 </style>
 
 <nav>
@@ -21,6 +22,12 @@ a {
     <a href="" onclick="alert('申し訳ございません。ただいま日本語版は公開のがありません。完了と公開について報告までお待ちください。Apologies for the inconvenience, but the Japanese translation has not been released yet. Please check back when it will be completed and published.')">日本語</a>
     <% } %>
 
-<iframe align="right" src="https://free.timeanddate.com/clock/ianwsc56/tljp/fcfff/tct/pct/tt0/tw0/tm3/td2/th1/ta1/tb2" frameborder="0" width="163" height="19" allowtransparency="true"></iframe>
+<a href="https://time.is/UTC" id="time_is_link" rel="nofollow" style="font-size:16px;color:#FFFFFF">Time in UTC:</a>
+<span id="UTC_za00" style="font-size:16px;color:#FFFFFF"></span>
+<script src="//widget.time.is/en.js"></script>
+<script>
+time_is_widget.init({UTC_za00:{template:"DATE TIME", date_format:"year-monthnum-daynum"}});
+</script>
+
 
 </nav>
