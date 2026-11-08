@@ -240,7 +240,7 @@ router.get('/channels/subchannel/:subchannelID/discussion/:discussionID/downvote
 router.post('/channels/subchannel/:subchannelID/discussion/:discussionID/message/:messageID/upvote/', async (req, res) => {
   try {
     console.log('UPVOTE')
-      const discussion = await Message.findOne({messageID: req.params.messageID})
+      const message = await Message.findOne({messageID: req.params.messageID})
 
     await Message.findByIdAndUpdate(message._id, {
       $push: { upvoteCount: req.session.user._id },
@@ -273,7 +273,7 @@ router.get('/channels/subchannel/:subchannelID/discussion/:discussionID/message/
 router.post('/channels/subchannel/:subchannelID/discussion/:discussionID/message/:messageID/downvote/', async (req, res) => {
   try {
     console.log('DOWNVOTE')
-      const discussion = await Message.findOne({messageID: req.params.messageID})
+      const message = await Message.findOne({messageID: req.params.messageID})
 
     await Message.findByIdAndUpdate(message._id, {
       $push: { downvoteCount: req.session.user._id },
