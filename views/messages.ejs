@@ -8,7 +8,7 @@
 </head>
 <body>
         <%- include('./partials/navbar') %>
-        <a href="/channels/subchannel/:subchannelID/discussion/:discussionID/create-message">Create Message</a>
+        <a href="/channels/subchannel/<%= subchannelID %>/discussion/<%= discussionID %>/create-message">Create Message</a>
 
         <% for(let oneMessage of Message){ %>
     <fieldset>
@@ -17,22 +17,15 @@
     <br>
     <p><%= oneMessage.messageBody %></p>
     <br>
-        <%= for(let oneUser of User){ %>
-    <p><%= Message.upvoteCount %> upvotes</p>
-    <form action="/channels/subchannel:=subchannelID/discussion/:discussionID/message/<%= Message.messageID %>/upvoted-by/<%= oneUser.userID %>" method="POST">
-    <button type="submit">Upvote</button>
-    <p><%= Message.downvoteCount %> downvotes</p>
-    <form action="/channels/subchannel:=subchannelID/discussion/:discussionID/message/<%= Message.messageID %>/downvoted-by/<%= oneUser.userID %>" method="POST">
-    <button type="submit">Downvote</button>
-        <% } %>
-    <% if (userHasUpvoted) { %>
-<p>You've upvoted this message.</p>
-<% } else if (userHasDownvoted) { %>
-<p>You've downvoted this message.</p>
-<% } %>
-    <a href="/channels/subchannel:=subchannelID/discussion/:discussionID/message/<%= oneMessage.messageID %>/edit">Edit/Delete Message</a>
+      
+    <% // if (userHasUpvoted) { %>
+<!-- <p>You've upvoted this message.</p>
+<% // } else if (userHasDownvoted) { %>
+<p>You've downvoted this message.</p> -->
+<% // } %>
+    <a href="/channels/subchannel/<%= subchannelID %>/discussion/<%= discussionID %>/message/<%= oneMessage.messageID %>/edit">Edit/Delete Message</a>
     </fieldset>
-    <% } %>
+    <%  } %>
 </form>
 </body>
 </html>

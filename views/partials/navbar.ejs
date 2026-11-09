@@ -10,18 +10,18 @@ a {
 <nav>
     <a href="/"><b>Alkhayat Renraku</b></a>
     <a href="/channels">Channels</a>
-    <a href="/all-discussions">Discussions</a>
+    <a href="/all-discussions" onclick="alert('The discussion page is currently under development and is incomplete at the moment. In case if there are any bugs or instabilities, please take notice. For the best experience, please browse the system using the Channels page. Apologies for the inconvenience.')">Discussions (experimental)</a>
     <a href="/news">RSS News</a>
     <% if (user){ %>
     <a href="/my-contributions">My Contributions</a>
     <a href="/my-profile">Profile</a>
+    <a href="https://fares-alkhayat.github.io/super-quiz/" onclick="confirm('Entering the Super Quiz will redirect you to a site outside of this domain. Redirect?')">Super Quiz</a>
     <a href="/auth/sign-out">Logout</a>
-    <a href="https://fares-alkhayat.github.io/super-quiz/">Super Quiz</a>
     <a href="" onclick="alert('申し訳ございません。ただいま日本語版は公開のがありません。完了と公開について報告までお待ちください。Apologies for the inconvenience, but the Japanese translation has not been released yet. Please check back when it will be completed and published.')">日本語</a>
     <% } else { %>
+    <a href="https://fares-alkhayat.github.io/super-quiz/">Super Quiz</a>
     <a href="/auth/sign-up">Sign up</a>
     <a href="/auth/sign-in">Login</a>
-    <a href="https://fares-alkhayat.github.io/super-quiz/">Super Quiz</a>
     <a href="" onclick="alert('申し訳ございません。ただいま日本語版は公開のがありません。完了と公開について報告までお待ちください。Apologies for the inconvenience, but the Japanese translation has not been released yet. Please check back when it will be completed and published.')">日本語</a>
     <% } %>
 
@@ -32,6 +32,7 @@ a {
 <script>
 time_is_widget.init({UTC_za00:{template:"DATE TIME", date_format:"year-monthnum-daynum"}});
 </script>
+
 
 
 </nav>

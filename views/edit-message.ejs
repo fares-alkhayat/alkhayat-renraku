@@ -1,4 +1,4 @@
-!<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,14 +10,10 @@
         <%- include('./partials/navbar') %>
                 <h1>Edit a Message</h1>
 
-        <form action="/channels/subchannel/:subchannelID/discussion/:discussionID/message/<%= Message.messageID %>/edit?_method=PUT" method="post">
+        <form action="/channels/subchannel/:subchannelID/discussion/:discussionID/message/<%= Message.messageID %>/edit?_method=PUT" method="get">
         <label for="subchannelName">Discussion Name:</label>
         <input type="text" name="discussionName" id="discussionName"/>
-        <br><label for="subchannelID">Subchannel ID:</label>
-        <input type="text" name="subchannelID" id="subchannelID"/>
         <p>Description:</p><textarea for="subchannelAbout" name="subchannelAbout" id="subchannelAbout" rows="12" cols="70"></textarea>
-        <br>Genre:<input type="text" name="genre" id="genre"/>
-        <br>Tags:<input type="text" name="tags" id="tags"/>
         <button type="submit">Edit Message</button>
         </form>
 

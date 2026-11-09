@@ -10,18 +10,27 @@
         <%- include('./partials/navbar') %>
                 <h1>Edit a Subchannel</h1>
 
-        <form action="/channels/subchannel/<%= Subchannel.subchannelID %>/edit?_method=PUT" method="post">
+        <form action="/channels/subchannel/<%= Subchannel.subchannelID %>/edit?_method=PUT" method="get">
         <label for="subchannelName">Discussion Name:</label>
         <input type="text" name="discussionName" id="discussionName"/>
-        <br><label for="subchannelID">Subchannel ID:</label>
-        <input type="text" name="subchannelID" id="subchannelID"/>
+        <label for="channelRef">Channel to Assign:</label>
+        <select class="form-select" autocomplete="channelRef" id="channelRef" name="channelRef">
+        <option value='6aeb7b372251dfd71e5de27c' data-values='01a1a7d9-fa4a-7941-be8c-dce21cad52e3'>Japan</option>
+        <option value='6aeb7c2e2251dfd71e5de27e' data-values='01a1a7dc-521f-7e55-8f80-24486eaf69dc'>Science and Technology</option>
+        <option value='6aeb7c892251dfd71e5de27f' data-values='01a1a7dd-ea9e-75b8-9bde-13ce056cd255'>Entertainment and Pop Culture</option>
+        <option value='6aecf32b8e16758cc699c056' data-values='01a1ad95-0b4c-7cc5-8d91-c1f022c901e1'>Star Trek and Science Fiction</option>
+        <option value='6aecf2158e16758cc699c052' data-values='01a1ad90-959a-7c5a-baf2-f4bffe701fe5'>Misc Channel 1</option>
+        <option value='6aecf23f8e16758cc699c053' data-values='01a1ad91-ebb2-758d-841d-65651ab51e84'>Misc Channel 2</option>
+        <option value='6aecf2898e16758cc699c054' data-values='01a1ad92-d382-7616-a4cf-4a724c11a6e7'>Misc Channel 3</option>
+        <option value='6aecf2bf8e16758cc699c055' data-values='01a1ad93-d548-71de-a71f-c7346334a425'>Misc Channel 4</option>
+        </select>
         <p>Description:</p><textarea for="subchannelAbout" name="subchannelAbout" id="subchannelAbout" rows="12" cols="70"></textarea>
         <br>Genre:<input type="text" name="genre" id="genre"/>
         <br>Tags:<input type="text" name="tags" id="tags"/>
         <button type="submit">Edit Subchannel</button>
         </form>
 
-        <form onclick="confirm('Are you sure you want to delete this subchannel? WARNING: This action cannot be undone once executed.')" action="/channels/subchannel/<%= Subchannel.subchannelID %>/edit?_method=DELETE" method="post">
+        <form onclick="confirm('Are you sure you want to delete this subchannel? WARNING: This action cannot be undone once executed.')" action="/channels/subchannel/<%= Subchannel.subchannelID %>?_method=DELETE" method="post">
         <button>Delete Subchannel</button>
         </form>
 </body>

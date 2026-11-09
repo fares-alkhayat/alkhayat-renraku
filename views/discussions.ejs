@@ -24,6 +24,8 @@
     <form action="/channels/subchannel/<%= subchannelId %>/discussion/<%= oneDiscussion.discussionID %>/downvoted-by/<%= user.userID %>" method="POST">
     <button type="submit">Downvote</button>
 
+    <p><%= oneDiscussion.upvoteCount.length - oneDiscussion.downvoteCount.length %> Votes</p>
+
 <!---
     <% // if (userHasUpvoted) { %>
 <p>You've upvoted this discussion.</p>

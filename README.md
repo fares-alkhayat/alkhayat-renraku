@@ -8,7 +8,9 @@ Platform: Web-based
 
 Genre: Instant Messaging, Forum or Discussion Platform
 
-Latest version: 0.0.0 (under development)
+Latest version: 1.0.0-alpha (pre-release)
+
+Released on Monday 2026-11-09
 
 ## Overview
 
@@ -30,6 +32,8 @@ ATTENTION: Registration of a user is required to send, edit and delete messages.
 
 To register, a user needs to be as of the minimum age of utilising SNS in your country. If your country does not impose a minimum age, then the base requirement of registration to Alkhayat Renraku is at least 13 years old by default. Please consult the laws, regulations and the government of your country before registering.
 
+Furthermore, due to technical difficulties, updating content in this site is not possible as of now. Apologies for any inconvenience. As of now, you can only create, read and delete content.
+
 ## User Stories
 
 1. When a user enters the site, he/she needs to make an account. A name, password, gender, date of birth, bio and other geolocational information must be included.
@@ -46,18 +50,31 @@ To register, a user needs to be as of the minimum age of utilising SNS in your c
 
 ## Database Design
 
+The database consists out of four categories where messages are stored:
+
+1. Channel
+
+2. Subchannel
+
+3. Discussion
+
+4. Message
+
 ## Routes
 
 | Method | Route | Description |
 |---------|-------|-------------|
 | GET | / | Home page |
-| GET | /listings | List all listings |
-| GET | /listings/new | New listing form |
-| POST | /listings | Create listing |
-| GET | /listings/:id | View listing |
-| GET | /listings/:id/edit | Edit listing form |
-| PUT | /listings/:id | Update listing |
-| DELETE | /listings/:id | Delete listing |
+| GET | /channels | List all channels |
+| GET | /channels/subchannels | List all subchannels |
+| GET | /channels/subchannels/:subchannelID/ | List one subchannel showing all discussions |
+| GET | /channels/subchannels/:subchannelID/discussion/:discussionID | List one discussion |
+| POST | /channels/subchannels | Add a subchannel |
+| POST | /channels/subchannels/:subchannelID/ | Add a discussion |
+| POST | /channels/subchannels/:subchannelID/discussion/:discussionID | Add a message |
+| GET | .../edit | Edit form |
+| PUT | .../:id | Update form |
+| DELETE | .../:id | Delete |
 
 ## Features
 
@@ -98,3 +115,7 @@ Therefore, I believe AI tools of all kinds are trained on the work of human work
 If you see my work used to train an AI without my permission, please let me know.
 
 ## Credits
+
+© 2026 Fares Alkhayat. All rights reserved.
+
+All copyrighted content belong to their respective owners.
