@@ -11,6 +11,10 @@ router.get('/',(req,res)=>{
     res.render('homepage.ejs')
 })
 
+router.get('/news',(req,res)=>{
+    res.render('news.ejs')
+})
+
 router.get('/my-profile', isSignedIn, async (req,res)=>{
     const user = await User.findById(req.session.user._id)
     res.render('profile.ejs', {user: user})
@@ -122,7 +126,7 @@ router.post('/channels/subchannel/:subchannelID/discussion/:discussionID/message
 
 router.get('/channels/subchannel/:subchannelID/edit', isSignedIn, async (req,res)=>{
     const foundSubchannel = await Subchannel.find({subchannelID: req.params.subchannelID})
-    if(!foundSubchannel.subchannelOwner.equals(req.session.user._id)){
+    if(req.foundSubchannel.subchannelOwner._id != (req.session.user._id)){
     return res.send('Action not allowed.')
     }
     res.render('edit-subchannel.ejs',{Subchannel: foundSubchannel})
@@ -130,15 +134,15 @@ router.get('/channels/subchannel/:subchannelID/edit', isSignedIn, async (req,res
 
 router.get('/channels/subchannel/:subchannelID/discussion/:discussionID/edit', isSignedIn, async (req,res)=>{
     const foundDiscussion = await Discussion.find({discussionID: req.params.discussionID})
-        if(!foundDiscussion.discussionOwner.equals(req.session.user._id)){
+    if(req.foundDiscussion.subchannelOwner._id != (req.session.user._id)){
         return res.send('Action not allowed.')
     }
     res.render('edit-discussion.ejs',{Discussion: foundDiscussion})
 })
 
 router.get('/channels/subchannel/:subchannelID/discussion/:discussionID/message/:messageID/edit', isSignedIn, async (req,res)=>{
-    const foundMessage = await Message.find({messageID: req.params.messageID})
-        if(!foundMessage.messageOwner.equals(req.session.user._id)){
+    const foundMessage = await Message.find({discussionID: req.params.discussionID})
+    if(req.foundMessage.messageOwner._id != (req.session.user._id)){
         return res.send('Action not allowed.')
     }
     res.render('edit-message.ejs',{Message: foundMessage})
@@ -183,7 +187,7 @@ router.post('/channels/subchannel/:subchannelID/discussion/:discussionID/upvote/
     await Discussion.findByIdAndUpdate(discussion._id, {
       $push: { upvoteCount: req.session.user._id },
     });
-    res.redirect(`/`);
+    res.redirect('');
   } catch (error) {
     console.log(error);
  }
@@ -204,7 +208,7 @@ router.get('/channels/subchannel/:subchannelID/discussion/:discussionID/upvoted-
 
   } catch (error) {
     console.log(error);
-    res.redirect('/');
+    res.redirect('/channels/subchannel/:subchannelID/discussion/:discussionID');
   }
 });
 
@@ -216,7 +220,7 @@ router.post('/channels/subchannel/:subchannelID/discussion/:discussionID/downvot
     await Discussion.findByIdAndUpdate(discussion._id, {
       $push: { downvoteCount: req.session.user._id },
     });
-    res.redirect(`/`);
+    res.redirect('');
   } catch (error) {
     console.log(error);
  }
@@ -238,7 +242,7 @@ router.get('/channels/subchannel/:subchannelID/discussion/:discussionID/downvote
 
   } catch (error) {
     console.log(error);
-    res.redirect('/');
+    res.redirect('/channels/subchannel/:subchannelID/discussion/:discussionID');
   }
 });
 
@@ -271,7 +275,7 @@ router.get('/channels/subchannel/:subchannelID/discussion/:discussionID/message/
 
   } catch (error) {
     console.log(error);
-    res.redirect('/');
+    res.redirect('/channels/subchannel/:subchannelID/discussion/:discussionID/message/:messageID');
   }
 });
 
@@ -283,7 +287,7 @@ router.post('/channels/subchannel/:subchannelID/discussion/:discussionID/message
     await Message.findByIdAndUpdate(message._id, {
       $push: { downvoteCount: req.session.user._id },
     });
-    res.redirect(`/`);
+    res.redirect('/');
   } catch (error) {
     console.log(error);
  }
@@ -305,7 +309,7 @@ router.get('/channels/subchannel/:subchannelID/discussion/:discussionID/message/
 
   } catch (error) {
     console.log(error);
-    res.redirect('/');
+    res.redirect('/channels/subchannel/:subchannelID/discussion/:discussionID/message/:messageID');
   }
 });
 

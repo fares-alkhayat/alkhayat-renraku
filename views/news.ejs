@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Document</title>
+</head>
+    <%- include('./partials/navbar') %>
+<body>
+
+<fieldset>
+<legend>Weather in Tokyo</legend>
+<style>.max_temp{display:inline-block !important}.min_temp{display:inline-block !important}.temp{display:block !important}.rain_s{display:block !important}.pop-rain{display:block !important}.speed-wind{display:block !important}.deg-wind{display:block !important}.w_snow{display:block !important}.w_bg{background:linear-gradient(to right,#000000, #fff)}</style><link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.12/css/weather-icons.min.css"><link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.12/css/weather-icons-wind.css"><link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet"><script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script><script type="text/javascript">weather_value=7;lat = 35.69389;lon =139.753616;inputText1 = "東京都千代田区";search_add = "東京都千代田区";</script><script src="https://sitecreation.co.jp/wp-content/themes/sango-theme-child/tpl/weather.js"></script><link id="PageStyleSheet" rel="stylesheet" href="https://sitecreation.co.jp/wp-content/themes/sango-theme-child/tpl/style.css"><div id="weather-wrapper"><div id="weather1"></div><div id="weather2"></div></div>
+</fieldset>
+
+<fieldset>
+<legend>News: Japan</legend>
+    <iframe width="96%" height="750" class="rssdog" src="https://www.rssdog.com/index.php?url=https%3A%2F%2Fnewsonjapan.com%2Frss%2Ftop.xml&mode=html&showonly=&maxitems=0&showdescs=1&desctrim=0&descmax=0&tabwidth=100%25&showdate=1&utf8=1&linktarget=_blank&bordercol=%23d4d0c8&headbgcol=%23999999&headtxtcol=%23ffffff&titlebgcol=%23f1eded&titletxtcol=%23000000&itembgcol=%23ffffff&itemtxtcol=%23000000&ctl=0"></iframe>
+    <iframe width="96%" height="750" class="rssdog" src="https://www.rssdog.com/index.php?url=https%3A%2F%2Fnews.web.nhk%2Fn-data%2Fconf%2Fna%2Frss%2Fcat0.xml&mode=html&showonly=&maxitems=0&showdescs=1&desctrim=0&descmax=0&tabwidth=100%25&showdate=1&utf8=1&linktarget=_blank&bordercol=%23d4d0c8&headbgcol=%23999999&headtxtcol=%23ffffff&titlebgcol=%23f1eded&titletxtcol=%23000000&itembgcol=%23ffffff&itemtxtcol=%23000000&ctl=0"></iframe>
+    <iframe width="96%" height="750" class="rssdog" src="https://www.rssdog.com/index.php?url=https%3A%2F%2Fnews.yahoo.co.jp%2Frss%2Ftopics%2Ftop-picks.xml&mode=html&showonly=&maxitems=0&showdescs=1&desctrim=0&descmax=0&tabwidth=100%25&showdate=1&utf8=1&linktarget=_blank&bordercol=%23d4d0c8&headbgcol=%23999999&headtxtcol=%23ffffff&titlebgcol=%23f1eded&titletxtcol=%23000000&itembgcol=%23ffffff&itemtxtcol=%23000000&ctl=0"></iframe>
+    <br>
+    <iframe width="96%" height="750" class="rssdog" src="https://www.rssdog.com/index.php?url=https%3A%2F%2Fenglish.kyodonews.net%2Flist%2Ffeed%2Frss4kyodonews-fzone&mode=html&showonly=&maxitems=0&showdescs=1&desctrim=0&descmax=0&tabwidth=100%25&showdate=1&utf8=1&linktarget=_blank&bordercol=%23d4d0c8&headbgcol=%23999999&headtxtcol=%23ffffff&titlebgcol=%23f1eded&titletxtcol=%23000000&itembgcol=%23ffffff&itemtxtcol=%23000000&ctl=0"></iframe>
+    <iframe width="96%" height="750" class="rssdog" src="https://www.rssdog.com/index.php?url=https%3A%2F%2Ftoyokeizai.net%2Flist%2Ffeed%2Frss&mode=html&showonly=&maxitems=0&showdescs=1&desctrim=0&descmax=0&tabwidth=100%25&showdate=1&utf8=1&linktarget=_blank&bordercol=%23d4d0c8&headbgcol=%23999999&headtxtcol=%23ffffff&titlebgcol=%23f1eded&titletxtcol=%23000000&itembgcol=%23ffffff&itemtxtcol=%23000000&ctl=0"></iframe>
+    <iframe width="96%" height="750" class="rssdog" src="https://www.rssdog.com/index.php?url=https%3A%2F%2Fsoranews24.com%2Fcategory%2Fjapan%2Ffeed%2F&mode=html&showonly=&maxitems=0&showdescs=1&desctrim=0&descmax=0&tabwidth=100%25&showdate=1&utf8=1&linktarget=_blank&bordercol=%23d4d0c8&headbgcol=%23999999&headtxtcol=%23ffffff&titlebgcol=%23f1eded&titletxtcol=%23000000&itembgcol=%23ffffff&itemtxtcol=%23000000&ctl=0"></iframe>
+    <br>
+</fieldset>
+
+<fieldset>
+<legend>News: Star Trek</legend>
+    <iframe width="96%" height="750" class="rssdog" src="https://www.rssdog.com/index.php?url=https%3A%2F%2Fwww.ex-astris-scientia.org%2Feas.rss&mode=html&showonly=&maxitems=0&showdescs=1&desctrim=0&descmax=0&tabwidth=100%25&showdate=1&utf8=1&linktarget=_blank&bordercol=%23d4d0c8&headbgcol=%23999999&headtxtcol=%23ffffff&titlebgcol=%23f1eded&titletxtcol=%23000000&itembgcol=%23ffffff&itemtxtcol=%23000000&ctl=0"></iframe>
+    <iframe width="96%" height="750" class="rssdog" src="https://www.rssdog.com/index.php?url=https%3A%2F%2Ftrekmovie.com%2Ffeed%2F&mode=html&showonly=&maxitems=0&showdescs=1&desctrim=0&descmax=0&tabwidth=100%25&showdate=1&utf8=1&linktarget=_blank&bordercol=%23d4d0c8&headbgcol=%23999999&headtxtcol=%23ffffff&titlebgcol=%23f1eded&titletxtcol=%23000000&itembgcol=%23ffffff&itemtxtcol=%23000000&ctl=0"></iframe>
+    <br>
+    <iframe width="96%" height="750" class="rssdog" src="https://www.rssdog.com/index.php?url=https%3A%2F%2Ftreknews.net%2Ffeed%2F&mode=html&showonly=&maxitems=0&showdescs=1&desctrim=0&descmax=0&tabwidth=100%25&showdate=1&utf8=1&linktarget=_blank&bordercol=%23d4d0c8&headbgcol=%23999999&headtxtcol=%23ffffff&titlebgcol=%23f1eded&titletxtcol=%23000000&itembgcol=%23ffffff&itemtxtcol=%23000000&ctl=0"></iframe>
+    <iframe width="96%" height="750" class="rssdog" src="https://www.rssdog.com/index.php?url=https%3A%2F%2Ftrekcentral.net%2Fcategory%2Fnews%2Ffeed%2F&mode=html&showonly=&maxitems=0&showdescs=1&desctrim=0&descmax=0&tabwidth=100%25&showdate=1&utf8=1&linktarget=_blank&bordercol=%23d4d0c8&headbgcol=%23999999&headtxtcol=%23ffffff&titlebgcol=%23f1eded&titletxtcol=%23000000&itembgcol=%23ffffff&itemtxtcol=%23000000&ctl=0"></iframe>
+</fieldset>       
+
+<fieldset>
+<legend>News: General</legend>
+    <iframe width="96%" height="750" class="rssdog" src="https://www.rssdog.com/index.php?url=https%3A%2F%2Fwww.pbs.org%2Fnewshour%2Ffeeds%2Frss%2Fheadlines&mode=html&showonly=&maxitems=0&showdescs=1&desctrim=0&descmax=0&tabwidth=100%25&showdate=1&utf8=1&linktarget=_blank&bordercol=%23d4d0c8&headbgcol=%23999999&headtxtcol=%23ffffff&titlebgcol=%23f1eded&titletxtcol=%23000000&itembgcol=%23ffffff&itemtxtcol=%23000000&ctl=0"></iframe>
+    <iframe width="96%" height="750" class="rssdog" src="https://www.rssdog.com/index.php?url=https%3A%2F%2Ffeeds.npr.org%2F1002%2Frss.xml&mode=html&showonly=&maxitems=0&showdescs=1&desctrim=0&descmax=0&tabwidth=100%25&showdate=1&utf8=1&linktarget=_blank&bordercol=%23d4d0c8&headbgcol=%23999999&headtxtcol=%23ffffff&titlebgcol=%23f1eded&titletxtcol=%23000000&itembgcol=%23ffffff&itemtxtcol=%23000000&ctl=0"></iframe>
+    <br>
+    <iframe width="96%" height="750" class="rssdog" src="https://www.rssdog.com/index.php?url=https%3A%2F%2Fsearch.cnbc.com%2Frs%2Fsearch%2Fcombinedcms%2Fview.xml%3FpartnerId%3Dwrss01%26id%3D100003114&mode=html&showonly=&maxitems=0&showdescs=1&desctrim=0&descmax=0&tabwidth=100%25&showdate=1&utf8=1&linktarget=_blank&bordercol=%23d4d0c8&headbgcol=%23999999&headtxtcol=%23ffffff&titlebgcol=%23f1eded&titletxtcol=%23000000&itembgcol=%23ffffff&itemtxtcol=%23000000&ctl=0"></iframe>
+    <iframe width="96%" height="750" class="rssdog" src="https://www.rssdog.com/index.php?url=https%3A%2F%2Ffeeds.nbcnews.com%2Fnbcnews%2Fpublic%2Fnews&mode=html&showonly=&maxitems=0&showdescs=1&desctrim=0&descmax=0&tabwidth=100%25&showdate=1&utf8=1&linktarget=_blank&bordercol=%23d4d0c8&headbgcol=%23999999&headtxtcol=%23ffffff&titlebgcol=%23f1eded&titletxtcol=%23000000&itembgcol=%23ffffff&itemtxtcol=%23000000&ctl=0"></iframe>
+</fieldset>
+
+<h2>Finance News</h2>
+<!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+  <div class="tradingview-widget-container__widget"></div>
+  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/markets/" rel="noopener nofollow" target="_blank"><span class="blue-text">World markets</span></a><span class="trademark">&nbsp;by TradingView</span></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+  {
+  "lineWidth": 2,
+  "lineType": 0,
+  "chartType": "area",
+  "showVolume": true,
+  "fontColor": "rgb(106, 109, 120)",
+  "gridLineColor": "rgba(242, 242, 242, 0.06)",
+  "volumeUpColor": "rgba(34, 171, 148, 0.5)",
+  "volumeDownColor": "rgba(247, 82, 95, 0.5)",
+  "backgroundColor": "#0F0F0F",
+  "widgetFontColor": "#DBDBDB",
+  "upColor": "#22ab94",
+  "downColor": "#f7525f",
+  "borderUpColor": "#22ab94",
+  "borderDownColor": "#f7525f",
+  "wickUpColor": "#22ab94",
+  "wickDownColor": "#f7525f",
+  "colorTheme": "dark",
+  "isTransparent": false,
+  "locale": "en",
+  "chartOnly": false,
+  "scalePosition": "right",
+  "scaleMode": "Normal",
+  "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
+  "valuesTracking": "1",
+  "changeMode": "price-and-percent",
+  "symbols": [
+    [
+      "U.S. DOLLAR / JAPANESE YEN",
+      "FX_IDC:USDJPY|1D"
+    ],
+    [
+      "Nikkei 225",
+      "FRED:NIKKEI225|1D"
+    ],
+    [
+      "GBP/JPY",
+      "FX_IDC:GBPJPY|1D"
+    ],
+    [
+      "FX_IDC:EURJPY|1D"
+    ],
+    [
+      "Gold",
+      "TVC:GOLD|1D"
+    ],
+    [
+      "Gold / Japanese Yen",
+      "FX_IDC:XAUJPY|1D"
+    ],
+    [
+      "TVC:SILVER|1D"
+    ],
+    [
+      "Silver / Japanese Yen",
+      "FX_IDC:XAGJPY|1D"
+    ],
+    [
+      "TVC:PLATINUM|1D"
+    ],
+    [
+      "FX_IDC:XPTJPY|1D"
+    ],
+    [
+      "Bitcoin",
+      "CRYPTO:BTCUSD|1D"
+    ],
+    [
+      "Bitcoin / Japanese Yen",
+      "BITFLYER:BTCJPY|1D"
+    ],
+    [
+      "XRP",
+      "CRYPTO:XRPUSD|1D"
+    ],
+    [
+      "Solana",
+      "CRYPTO:SOLUSD|1D"
+    ],
+    [
+      "Solana / Japanese Yen",
+      "VANTAGE:SOLJPY|1D"
+    ]
+  ],
+  "dateRanges": [
+    "1d|1",
+    "1m|30",
+    "3m|60",
+    "12m|1D",
+    "60m|1W",
+    "all|1M"
+  ],
+  "fontSize": "10",
+  "headerFontSize": "medium",
+  "autosize": true,
+  "dateFormat": "yyyy-MM-dd",
+  "timeHoursFormat": "24-hours",
+  "width": "100%",
+  "height": "100%",
+  "noTimeScale": false,
+  "hideDateRanges": false,
+  "showMA": true,
+  "maLength": 9,
+  "maLineColor": "#2962FF",
+  "maLineWidth": 1,
+  "hideMarketStatus": false,
+  "hideSymbolLogo": false
+}
+  </script>
+</div>
+<!-- TradingView Widget END -->    
+
+<script type="module" src="https://widgets.tradingview-widget.com/w/en/tv-market-data.js"></script>
+
+<tv-market-data symbol-sectors='[{"sectionName":"Indices","symbols":["INDEX:NKY","OSE:TOPIX1!"]},{"sectionName":"Futures","symbols":["CMCMARKETS:GOLD","FX_IDC:XAUJPY","TVC:SILVER","FX_IDC:XAGJPY","TVC:PLATINUM","FX_IDC:XPTJPY"]},{"sectionName":"Forex","symbols":["FX_IDC:USDJPY","FX_IDC:USDEUR","FX_IDC:USDGBP","FX_IDC:EURJPY","FX_IDC:GBPJPY"]},{"sectionName":"Crypto","symbols":["CRYPTO:BTCUSD","BITFLYER:BTCJPY","CRYPTO:ETHUSD","VANTAGE:ETHJPY","CRYPTO:XRPUSD","CRYPTO:SOLUSD","VANTAGE:SOLJPY"]}]' heatmap></tv-market-data>
+</body>
+</html>

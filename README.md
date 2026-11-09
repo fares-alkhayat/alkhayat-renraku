@@ -24,11 +24,25 @@ In this service, you can send messages within discussions sorted within channels
 
 ## Getting Started
 
+WARNING: This website is not optimal to run on a mobile phone. It is recommended to use a large-screen device such as a PC, tablet, game console, etc., with a browser resolution of at least 800x800px.
+
 ATTENTION: Registration of a user is required to send, edit and delete messages. Unregistered users and guests are limited to viewing messages only.
 
 To register, a user needs to be as of the minimum age of utilising SNS in your country. If your country does not impose a minimum age, then the base requirement of registration to Alkhayat Renraku is at least 13 years old by default. Please consult the laws, regulations and the government of your country before registering.
 
 ## User Stories
+
+1. When a user enters the site, he/she needs to make an account. A name, password, gender, date of birth, bio and other geolocational information must be included.
+
+2. The user can either navigate via entering channels or see all discussions at once.
+
+3. The messages are sorted through channels, subchannels and discussions. The user can create and edit subchannels, discussions and messages, but the administrator of the site can assign any channel to the system.
+
+4. Discussions and messages can be reacted by sentiment by simply upvoting or downvoting them.
+
+5. There is no reply function, so the only way to refer to someone's message is to use their message ID.
+
+6. On the homepage, a user can be able to spark some ideas of their discussions using news features, like foreign exchange rates, weather conditions and many headlines using RSS feeds.
 
 ## Database Design
 
@@ -53,9 +67,15 @@ To register, a user needs to be as of the minimum age of utilising SNS in your c
 
 3. Messages and discussions can be upvoted and downvoted to determine the overall sentiment of the audience.
 
-4. The homepage contains news-related features such as foreign exchange, weather and RSS news feeds (limited to Japan and Star Trek only).
+4. The homepage contains news-related features such as foreign exchange, weather and RSS news feeds (limited to Japan, Star Trek and international news only).
 
 ## Future Enhancements
+
+1. An incremental message ID must be implemented (not to be confused with the existing ID, as both will be used alongside each other) to determine the sequence of the message in a discussion.
+
+2. A Japanese language release. (However, Japanese language users can use the platform to communicate in Japanese through channels, since the site uses Unicode (UTF-8) encoding which supports all languages.)
+
+3. A view count for each discussion.
 
 ## No-AI Disclaimer
 
