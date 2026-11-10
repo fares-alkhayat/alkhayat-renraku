@@ -10,9 +10,9 @@
         <%- include('./partials/navbar') %>
                 <h1>Edit a Subchannel</h1>
 
-        <form action="/channels/subchannel/<%= Subchannel.subchannelID %>/edit?_method=PUT" method="get">
+        <form action="/channels/subchannel/<%= Subchannel.subchannelID %>?_method=PUT" method="post">
         <label for="subchannelName">Discussion Name:</label>
-        <input type="text" name="discussionName" id="discussionName"/>
+        <input value="<%=Subchannel.subchannelName %>"  type="text" name="subchannelName" id="subchannelName"/>
         <label for="channelRef">Channel to Assign:</label>
         <select class="form-select" autocomplete="channelRef" id="channelRef" name="channelRef">
         <option value='6aeb7b372251dfd71e5de27c' data-values='01a1a7d9-fa4a-7941-be8c-dce21cad52e3'>Japan</option>
@@ -24,8 +24,8 @@
         <option value='6aecf2898e16758cc699c054' data-values='01a1ad92-d382-7616-a4cf-4a724c11a6e7'>Misc Channel 3</option>
         <option value='6aecf2bf8e16758cc699c055' data-values='01a1ad93-d548-71de-a71f-c7346334a425'>Misc Channel 4</option>
         </select>
-        <p>Description:</p><textarea for="subchannelAbout" name="subchannelAbout" id="subchannelAbout" rows="12" cols="70"></textarea>
-        <br>Genre:<input type="text" name="genre" id="genre"/>
+        <p>Description:</p><textarea for="subchannelAbout" name="subchannelAbout" id="subchannelAbout" rows="12" cols="70"><%=Subchannel.subchannelAbout %></textarea>
+        <br>Genre:<input  type="text" name="genre" id="genre"/>
         <br>Tags:<input type="text" name="tags" id="tags"/>
         <button type="submit">Edit Subchannel</button>
         </form>

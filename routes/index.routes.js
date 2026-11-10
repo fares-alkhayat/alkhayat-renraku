@@ -137,7 +137,7 @@ router.post('/channels/subchannel/:subchannelID/discussion/:discussionID/edit', 
 })
 
 router.post('/channels/subchannel/:subchannelID/discussion/:discussionID/message/:messageID/edit', isSignedIn, async (req,res)=>{
-        const foundMessage = await Message.find({Message: req.params.messageID})
+        const foundMessage = await Message.findOne({Message: req.params.messageID})
         if(!foundMessage.messageOwner.equals(req.session.user._id)){
         return res.send('Action not allowed.')
     }
@@ -175,13 +175,14 @@ router.get('/channels/subchannel/:subchannelID/discussion/:discussionID/message/
 })
 
 router.put('/channels/subchannel/:subchannelID', isSignedIn, async (req,res)=>{
-    const foundSubchannel = await Subchannel.find({subchannelID: req.params.subchannelID})
+    const foundSubchannel = await Subchannel.findOne({subchannelID: req.params.subchannelID})
+    const channelInfo = await Channel.findById( foundSubchannel.channelRef)
     if(foundSubchannel.subchannelOwner._id != (req.session.user._id)){
     return res.send('Action not allowed.')
     }
-    const updatedSubchannel = await Subchannel.findOneAndUpdate({subchannelID: req.params.subchannelID})
+    const updatedSubchannel = await Subchannel.findOneAndUpdate(foundSubchannel._id, req.body)
 
-    res.redirect('/channels/:channelID/',{Subchannel: updatedSubchannel})
+    res.redirect('/channels/' + channelInfo.channelID)
 })
 
 router.put('/channels/subchannel/:subchannelID/discussion/:discussionID', isSignedIn, async (req,res)=>{
